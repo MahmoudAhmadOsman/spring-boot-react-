@@ -2,7 +2,7 @@
 
 ### Project Description
 
-This product is based on Java and React js.
+This project is based on Java and React js.
 
 
 
