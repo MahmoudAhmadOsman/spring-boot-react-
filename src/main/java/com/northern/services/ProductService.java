@@ -35,7 +35,7 @@ public class ProductService implements ProductDAO<Product> {
             throw new InvalidUserException("\nAll product fields are required!!");
         } catch (Exception e) {
             e.printStackTrace();
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Unable to save product to the record!" + e);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Unable to save product to the database!!" + e);
         }
 
     }
