@@ -5,6 +5,7 @@ import com.northern.models.Product;
 import com.northern.repository.ProductRepository;
 
 import com.northern.utils.custom_exceptions.InvalidUserException;
+import com.northern.utils.custom_exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -61,16 +62,25 @@ public class ProductService implements ProductDAO<Product> {
 
     @Override
     public List<Product> getAll() {
-        return null;
+        List<Product> productList = null;
+        try {
+            productList = productRepository.findAll();
+        } catch (NotFoundException e) {
+            e.printStackTrace();
+            throw new InvalidUserException("\nSomething went wrong in product service layer!!!" + e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "\nProduct list is empty!!!" + e.getMessage());
+        }
+        return productList;
     }
-
 
 
     /******* ProductService Validation methods *********/
 
     boolean isValidProductName(String name) {
-        if (name.isEmpty()) throw new InvalidUserException( "\nProduct name is required!!" );
-        if (name.length() <= 3) throw new InvalidUserException("\nProduct name must be more than 3 characters!!"  );
+        if (name.isEmpty()) throw new InvalidUserException("\nProduct name is required!!");
+        if (name.length() <= 3) throw new InvalidUserException("\nProduct name must be more than 3 characters!!");
         return true;
     }
 
