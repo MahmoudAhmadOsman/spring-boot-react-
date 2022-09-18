@@ -20,6 +20,10 @@ public class ProductService implements ProductDAO<Product> {
     @Autowired
     private ProductRepository productRepository;
 
+    public ProductService(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
+
     @Override
     public Product save(Product product) throws IOException {
         if (product.getName().isEmpty() || product.getDescription().isEmpty() || product.getPrice() <= 0) {
@@ -59,4 +63,16 @@ public class ProductService implements ProductDAO<Product> {
     public List<Product> getAll() {
         return null;
     }
+
+
+
+    /******* ProductService Validation methods *********/
+
+    boolean isValidProductName(String name) {
+        if (name.isEmpty()) throw new InvalidUserException( "\nProduct name is required!!" );
+        if (name.length() <= 3) throw new InvalidUserException("\nProduct name must be more than 3 characters!!"  );
+        return true;
+    }
+
+
 }
