@@ -1,0 +1,8 @@
+.main_navication {
+	position: relative;
+}
+
+.main_navication nav.bg-dark {
+	border-radius: 0px !important;
+	border: 0px !important;
+}
