@@ -1,4 +1,7 @@
 import React from "react";
+import "./Navbar.css";
+import logo from "./logo.png";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
 	return (
@@ -6,9 +9,9 @@ const Navbar = () => {
 			<header>
 				<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
 					<div className="container-fluid">
-						<a className="navbar-brand" href="/">
-							Northern
-						</a>
+						<Link className="navbar-brand" to="/">
+							<img src={logo} alt="logo" className="img-fluid image-logo" />
+						</Link>
 						<button
 							className="navbar-toggler"
 							type="button"
@@ -23,27 +26,27 @@ const Navbar = () => {
 						<div className="collapse navbar-collapse" id="main">
 							<ul className="navbar-nav ms-auto mb-2 mb-lg-0">
 								<li className="nav-item">
-									<a className="nav-link active" aria-current="page" href="/">
+									<Link className="nav-link active" aria-current="page" to="/">
 										Home
-									</a>
+									</Link>
 								</li>
 								<li className="nav-item">
-									<a
+									<Link
 										className="nav-link active"
 										aria-current="page"
-										href="/products"
+										to="/products"
 									>
 										Products
-									</a>
+									</Link>
 								</li>
 								<li className="nav-item">
-									<a
+									<Link
 										className="nav-link active"
 										aria-current="page"
-										href="/signup"
+										to="/signup"
 									>
 										Sign up
-									</a>
+									</Link>
 								</li>
 							</ul>
 						</div>
