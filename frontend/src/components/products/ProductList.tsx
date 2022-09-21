@@ -5,7 +5,7 @@ const ProductList = () => {
 		<section className="product-list">
 			<div className="container">
 				<h1 className="text-success">Product List</h1>
-				<div className="roe">
+				<div className="row">
 					<div className="col-md-3"></div>
 				</div>
 			</div>

@@ -14,7 +14,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/api/v1/")
+@RequestMapping("/api/v1")
 public class ProductController {
     private final ProductService productService;
 
@@ -31,16 +31,16 @@ public class ProductController {
 
 
     //Get list of products
-///products/list
-    @GetMapping(value = "/products", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/products/list", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Product>> getAllProducts() throws IOException {
         List<Product> products = productService.getAll();
         return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
     }
 
     ///products/create
-   @PostMapping(value = "/products", consumes = "application/json", produces = MediaType.APPLICATION_JSON_VALUE)
-//    @PostMapping("/products")
+
+    //@PostMapping(value = "/products", consumes = "application/json", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping("/products/create")
     public ResponseEntity<Product> createProduct(@RequestBody Product product) throws IOException {
         Product createdProduct = productService.save(product);
         return new ResponseEntity<Product>(createdProduct, HttpStatus.CREATED);

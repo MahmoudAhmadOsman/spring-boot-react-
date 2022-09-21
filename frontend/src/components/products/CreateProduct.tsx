@@ -1,107 +1,103 @@
 import React, { useState } from "react";
-import ProductService from "../../services/ProductService";
 import { useNavigate } from "react-router-dom";
+import PRODUCT_API from "../../utils/ApiConfigs";
 
 const CreateProduct = () => {
-	// const blog = { name, price, description };
-	const [product, setProduct] = useState({
-		id: "",
-		name: "",
-		price: "",
-		description: "",
-	});
-
+	const [name, setName] = useState("");
+	const [price, setPrice] = useState("");
+	const [description, setDescription] = useState("");
 	const navigate = useNavigate();
 
-	const handleChange = (e: any) => {
-		const value = e.target.value;
-		setProduct({ ...product, [e.target.name]: value });
-	};
+	function updateName(event: any) {
+		setName(event.target.value);
+	}
 
-	const saveProduct = async (e: any) => {
-		e.preventDefault();
-		// console.log("Form submitted!!");
+	function updatePrice(event: any) {
+		setPrice(event.target.value);
+	}
 
-		ProductService.saveProduct(product)
-			.then((res) => {
-				console.log(res);
-				console.log(e.target.value);
+	function updateDescription(event: any) {
+		setDescription(event.target.value);
+	}
+
+	function submit(event: { preventDefault: () => void }) {
+		event.preventDefault();
+
+		PRODUCT_API.post("/products/create", {
+			name: name,
+			price: price,
+			description: description,
+		})
+			.then(() => {
+				alert("Procuct created successfully!");
 				navigate("/");
 			})
 			.catch((error) => {
-				console.log(error);
+				alert(error.response.data.message);
 			});
-	};
+
+		setName("");
+		setPrice("");
+		setDescription("");
+	}
 
 	return (
-		<section className="product">
-			<div className="container">
-				<h1 className="text-success">Add New Products</h1> <hr />
-				{/* */}
-				<form action="" className="fw-bold" onSubmit={saveProduct}>
+		<>
+			<div className="container mt-3">
+				<h1 className="text-success">Add New Product</h1> <hr />
+				<form className="m-3" onSubmit={submit}>
 					<div className="row">
 						<div className="col-md-10">
-							<label htmlFor="productName" className="form-label">
-								Product Name
-							</label>
-							<input
-								className="form-control form-control-lg"
-								type="text"
-								placeholder="Product name"
-								aria-label="form-control-lg"
-								name="name"
-								id="username"
-								value={product.name}
-								onChange={(e) => handleChange(e)}
-							/>
+							<div className="input-group mb-3">
+								<span className="input-group-text">Product Name</span>
+								<input
+									type="text"
+									className="form-control form-control-lg"
+									placeholder="Enter product name"
+									id="name"
+									value={name}
+									onChange={updateName}
+								/>
+							</div>
 						</div>
-						{/* Product price */}
 						<div className="col-md-2">
-							<label htmlFor="productPrice" className="form-label">
-								Product Price
-							</label>
-							<input
-								className="form-control form-control-lg"
-								type="number"
-								minLength={0}
-								maxLength={20}
-								placeholder="Product Price"
-								aria-label="form-control-lg"
-								name="price"
-								value={product.price}
-								onChange={(e) => handleChange(e)}
-							/>
+							<div className="input-group mb-3">
+								<span className="input-group-text">$</span>
+								<input
+									type="text"
+									className="form-control form-control-lg"
+									placeholder="Price"
+									id="price"
+									value={price}
+									onChange={updatePrice}
+								/>
+							</div>
 						</div>
+					</div>
 
-						{/* Product description */}
-					</div>
 					<div className="row">
-						<div className="col-md-12 mt-3">
-							<label htmlFor="productDescription" className="form-label">
-								Product Description
-							</label>
-							<textarea
-								className="form-control form-control-lg"
-								cols={30}
-								rows={10}
-								placeholder="Product description"
-								aria-label="form-control-lg"
-								name="description"
-								value={product.description}
-								onChange={(e) => handleChange(e)}
-							></textarea>
+						<div className="com-md-12">
+							<div className="input-group mb-3">
+								<span className="input-group-text">description</span>
+								<textarea
+									className="form-control form-control-lg"
+									cols={30}
+									rows={10}
+									placeholder="Product description"
+									id="description"
+									value={description}
+									onChange={updateDescription}
+								/>
+							</div>
 						</div>
 					</div>
-					<div className="row">
-						<div className="col-12 mt-2">
-							<button className="btn btn-success btn-lg fw-bold" type="submit">
-								SUBMIT
-							</button>
-						</div>
-					</div>
+
+					<button type="submit" className="btn btn-primary btn-lg">
+						Submit
+					</button>
 				</form>
-			</div>
-		</section>
+			</div>{" "}
+		</>
 	);
 };
 
