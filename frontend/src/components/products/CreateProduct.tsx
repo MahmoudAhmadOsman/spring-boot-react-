@@ -8,20 +8,20 @@ const CreateProduct = () => {
 	const [description, setDescription] = useState("");
 	const navigate = useNavigate();
 
-	const updateName = (event: any) => {
-		setName(event.target.value);
+	const updateName = (e: any) => {
+		setName(e.target.value);
 	};
 
-	const updatePrice = (event: any) => {
-		setPrice(event.target.value);
+	const updatePrice = (e: any) => {
+		setPrice(e.target.value);
 	};
 
-	const updateDescription = (event: any) => {
-		setDescription(event.target.value);
+	const updateDescription = (e: any) => {
+		setDescription(e.target.value);
 	};
 
-	function submit(event: { preventDefault: () => void }) {
-		event.preventDefault();
+	const submit = (e: { preventDefault: () => void }) => {
+		e.preventDefault();
 
 		PRODUCT_API.post("/products/create", {
 			name: name,
@@ -29,7 +29,7 @@ const CreateProduct = () => {
 			description: description,
 		})
 			.then(() => {
-				alert("Procuct created successfully!");
+				alert("New Procuct has been created successfully!!!");
 				navigate("/");
 			})
 			.catch((error) => {
@@ -39,7 +39,7 @@ const CreateProduct = () => {
 		setName("");
 		setPrice("");
 		setDescription("");
-	}
+	};
 
 	return (
 		<>
