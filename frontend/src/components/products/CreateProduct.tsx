@@ -42,7 +42,7 @@ const CreateProduct = () => {
 	};
 
 	return (
-		<>
+		<section className="cp-container">
 			<div className="container mt-3">
 				<h1 className="text-success">Add New Product</h1> <hr />
 				<form className="m-3" onSubmit={submit}>
@@ -54,6 +54,7 @@ const CreateProduct = () => {
 									type="text"
 									className="form-control form-control-lg"
 									placeholder="Enter product name"
+									required
 									id="name"
 									value={name}
 									onChange={updateName}
@@ -67,6 +68,7 @@ const CreateProduct = () => {
 									type="text"
 									className="form-control form-control-lg"
 									placeholder="Price"
+									required
 									id="price"
 									value={price}
 									onChange={updatePrice}
@@ -84,6 +86,7 @@ const CreateProduct = () => {
 									cols={30}
 									rows={10}
 									placeholder="Product description"
+									required
 									id="description"
 									value={description}
 									onChange={updateDescription}
@@ -97,7 +100,7 @@ const CreateProduct = () => {
 					</button>
 				</form>
 			</div>{" "}
-		</>
+		</section>
 	);
 };
 
