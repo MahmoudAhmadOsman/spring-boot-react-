@@ -8,17 +8,17 @@ const CreateProduct = () => {
 	const [description, setDescription] = useState("");
 	const navigate = useNavigate();
 
-	function updateName(event: any) {
+	const updateName = (event: any) => {
 		setName(event.target.value);
-	}
+	};
 
-	function updatePrice(event: any) {
+	const updatePrice = (event: any) => {
 		setPrice(event.target.value);
-	}
+	};
 
-	function updateDescription(event: any) {
+	const updateDescription = (event: any) => {
 		setDescription(event.target.value);
-	}
+	};
 
 	function submit(event: { preventDefault: () => void }) {
 		event.preventDefault();
