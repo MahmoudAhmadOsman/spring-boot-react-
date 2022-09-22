@@ -1,4 +1,6 @@
 import React from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/navbar/Navbar";
@@ -17,6 +19,8 @@ function App() {
 					<Route path="/create" element={<CreateProduct />}></Route>
 					<Route path="/signup" element={<Signup />}></Route>
 				</Routes>
+
+				<ToastContainer />
 			</BrowserRouter>
 		</div>
 	);

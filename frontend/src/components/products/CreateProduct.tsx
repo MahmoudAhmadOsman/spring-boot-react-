@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PRODUCT_API from "../../utils/ApiConfigs";
+import { toast } from "react-toastify";
 
 const CreateProduct = () => {
 	const [name, setName] = useState("");
 	const [price, setPrice] = useState("");
+
 	const [description, setDescription] = useState("");
 	const navigate = useNavigate();
 
@@ -29,11 +31,12 @@ const CreateProduct = () => {
 			description: description,
 		})
 			.then(() => {
-				alert("New Procuct has been created successfully!!!");
-				navigate("/");
+				toast.success("Procuct created successfully!!!");
+				navigate("/create");
 			})
 			.catch((error) => {
-				alert(error.response.data.message);
+				toast.error("Error: unable to create new product!!");
+				// console.log(error.response.data.message);
 			});
 
 		setName("");
