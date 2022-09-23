@@ -6,10 +6,8 @@ import { toast } from "react-toastify";
 import PRODUCT_API from "../../utils/ApiConfigs";
 
 const ProductList = () => {
-	//1.
 	const [products, setProducts] = useState([]);
 
-	//2.
 	useEffect(() => {
 		const fetchProduct = async () => {
 			try {
