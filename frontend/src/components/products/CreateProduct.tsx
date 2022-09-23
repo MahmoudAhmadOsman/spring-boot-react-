@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import PRODUCT_API from "../../utils/ApiConfigs";
 import { toast } from "react-toastify";
+import PRODUCT_API from "../../utils/ApiConfigs";
 
 const CreateProduct = () => {
 	const [name, setName] = useState("");
@@ -32,7 +32,7 @@ const CreateProduct = () => {
 		})
 			.then(() => {
 				toast.success("Procuct created successfully!!!");
-				navigate("/create");
+				navigate("/products");
 			})
 			.catch((error) => {
 				toast.error("Error: unable to create new product!!");
