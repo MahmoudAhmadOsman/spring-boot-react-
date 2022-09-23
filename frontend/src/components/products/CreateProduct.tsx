@@ -6,8 +6,8 @@ import { toast } from "react-toastify";
 const CreateProduct = () => {
 	const [name, setName] = useState("");
 	const [price, setPrice] = useState("");
-
 	const [description, setDescription] = useState("");
+
 	const navigate = useNavigate();
 
 	const updateName = (e: any) => {
@@ -45,8 +45,8 @@ const CreateProduct = () => {
 	};
 
 	return (
-		<section className="cp-container">
-			<div className="container mt-3">
+		<section className="cp-container ">
+			<div className="container mt-3 shadow-lg p-3 mb-5 bg-body rounded">
 				<h1 className="text-success">Add New Product</h1> <hr />
 				<form className="m-3" onSubmit={submit}>
 					<div className="row">
@@ -98,7 +98,7 @@ const CreateProduct = () => {
 						</div>
 					</div>
 
-					<button type="submit" className="btn btn-primary btn-lg">
+					<button type="submit" className="btn btn-primary btn-lg mb-4">
 						Submit
 					</button>
 				</form>

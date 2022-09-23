@@ -30,22 +30,36 @@ const Navbar = () => {
 										Home
 									</Link>
 								</li>
-								<li className="nav-item">
+
+								<li className="nav-item dropdown">
 									<Link
-										className="nav-link active"
-										aria-current="page"
-										to="/create"
+										className="nav-link dropdown-toggle"
+										data-bs-toggle="dropdown"
+										to="/products"
 									>
-										Create product
+										Products
 									</Link>
+									<ul className="dropdown-menu">
+										<li className="nav-link active">
+											<Link className="dropdown-item" to="/products">
+												Products
+											</Link>
+										</li>
+										<li className="nav-link active">
+											<Link className="dropdown-item" to="/products/create">
+												Add Product
+											</Link>
+										</li>
+									</ul>
 								</li>
+
 								<li className="nav-item">
 									<Link
 										className="nav-link active"
 										aria-current="page"
 										to="/signup"
 									>
-										Sign up
+										Register
 									</Link>
 								</li>
 							</ul>
