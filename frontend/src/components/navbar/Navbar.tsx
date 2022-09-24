@@ -11,6 +11,7 @@ const Navbar = () => {
 					<div className="container-fluid">
 						<Link className="navbar-brand" to="/">
 							<img src={logo} alt="logo" className="img-fluid image-logo" />
+							<span className="px-2 fw-bold">Nothern Systems</span>
 						</Link>
 						<button
 							className="navbar-toggler"

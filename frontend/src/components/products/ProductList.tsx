@@ -32,7 +32,7 @@ const ProductList = () => {
 				{/* <h1 className="text-success">Product List</h1> <hr /> */}
 				<div className="row">
 					{products.map((product) => (
-						<div className="col-md-3 " key={product["id"]}>
+						<div className="col-lg-3 col-md-6 col-xs-12 " key={product["id"]}>
 							<div
 								className="card mb-4 shadow shadow-lg rounded "
 								style={{ minHeight: "30rem" }}
