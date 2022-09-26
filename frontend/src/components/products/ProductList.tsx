@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 // import { useNavigate } from "react-router-dom";
@@ -15,7 +14,7 @@ const ProductList = () => {
 				setProducts(response.data);
 				console.log(response.data);
 			} catch (error) {
-				toast.error("Error: unable to load  products!!");
+				toast.error("Error: unable to load  data!!");
 			}
 		};
 		fetchProduct();
@@ -24,12 +23,12 @@ const ProductList = () => {
 	return (
 		<section className="product-list">
 			<div className="container">
-				<p className="text-center">
-					<small>New</small>
-					<br /> <b className="fs-1">iPhone Series</b> <br />
-					<b className="fw-bold fs-6 mb-3">Pro. Beyond.</b>
-				</p>
 				<div className="row">
+					<p className="text-center">
+						<small>New</small>
+						<br /> <b className="fs-1">iPhone Series</b> <br />
+						<b className="fw-bold fs-6 mb-3">Pro. Beyond.</b>
+					</p>
 					{products.map((product) => (
 						<div className="col-lg-3 col-md-6 col-xs-12 " key={product["id"]}>
 							<div

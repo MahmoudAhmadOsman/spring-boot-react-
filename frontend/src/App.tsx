@@ -9,6 +9,7 @@ import Signup from "./components/signup/Signup";
 import CreateProduct from "./components/products/CreateProduct";
 import Home from "./components/home/Home";
 import ProductList from "./components/products/ProductList";
+import Footer from "./components/footer/Footer";
  
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
 					<Route path="/products/create" element={<CreateProduct />}></Route>
 					<Route path="/signup" element={<Signup />}></Route>
 				</Routes>
-			 
+				<Footer />
 				<ToastContainer />
 			</BrowserRouter>
 		</div>
