@@ -29,7 +29,6 @@ const ProductList = () => {
 					<br /> <b className="fs-1">iPhone Series</b> <br />
 					<b className="fw-bold fs-6 mb-3">Pro. Beyond.</b>
 				</p>
-				{/* <h1 className="text-success">Product List</h1> <hr /> */}
 				<div className="row">
 					{products.map((product) => (
 						<div className="col-lg-3 col-md-6 col-xs-12 " key={product["id"]}>

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -51,7 +52,21 @@ public class ProductService implements ProductDAO<Product> {
     }
 
     @Override
-    public void delete(String id) {
+    public Product delete(String id) {
+
+        try {
+            Product product = productRepository.findById(id).get();
+            productRepository.delete(product);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "\nUnable to delete product!!!" + e.getMessage());
+        }
+
+        return null;
+//        Product product = productRepository.findById(id).get();
+//        productRepository.delete(product);
+//        return product;
 
     }
 
