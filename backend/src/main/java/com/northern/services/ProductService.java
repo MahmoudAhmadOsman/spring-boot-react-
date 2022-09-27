@@ -61,7 +61,6 @@ public class ProductService implements ProductDAO<Product> {
 
     @Override
     public void delete(Long id) {
-
         try {
             Product product = productRepository.findById(id).get();
             productRepository.delete(product);

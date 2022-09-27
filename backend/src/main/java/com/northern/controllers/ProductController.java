@@ -54,7 +54,13 @@ public class ProductController {
     //@FindById
     @GetMapping(value = "/products/list/find/{id}")
     public Product findProductById(@PathVariable Long id) {
-        return productService.findById(id);
+
+        try{
+            return productService.findById(id);
+        }catch(Exception e){
+            e.printStackTrace();
+            throw new InvalidUserException("\nUnable to  find product with this id!! " + e.getMessage());
+        }
     }
 
 
@@ -65,7 +71,7 @@ public class ProductController {
             return productService.update(product);
         } catch (Exception e) {
             e.printStackTrace();
-            throw new IllegalStateException("\nUnable to to update product!! " + e.getMessage());
+            throw new IllegalStateException("\nUnable to update product!! " + e.getMessage());
         }
     }
 
