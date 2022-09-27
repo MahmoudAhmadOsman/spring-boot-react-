@@ -12,7 +12,7 @@ const ProductList = () => {
 			try {
 				const response = await PRODUCT_API.get("/products/list");
 				setProducts(response.data);
-				console.log(response.data);
+				// console.log(response.data);
 			} catch (error) {
 				toast.error("Error: unable to load  data!!");
 			}
@@ -35,14 +35,14 @@ const ProductList = () => {
 								className="card mb-4 shadow shadow-lg rounded "
 								style={{ minHeight: "30rem" }}
 							>
-								<Link to={"/products/" + product["id"]}>
+								{/* to={"/product/" + product["id"]} */}
+								<Link to={`/product/${product["id"]}`}>
 									<img
 										src="https://source.unsplash.com/1600x900/?iphone"
 										className="card-img-top"
 										alt={product["name"]}
 									/>
 								</Link>
-
 								<div className="card-body">
 									<h3 className="card-title fw-bold text-secondary">
 										{product["name"]}
@@ -53,7 +53,10 @@ const ProductList = () => {
 									<p className="card-text text-muted">
 										{product["description"]}
 									</p>
-									<Link to="#" className="btn btn-outline-success">
+									<Link
+										to={"/product/" + product["id"]}
+										className="btn btn-outline-success"
+									>
 										View Details
 									</Link>
 								</div>

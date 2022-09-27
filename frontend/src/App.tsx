@@ -10,6 +10,7 @@ import CreateProduct from "./components/products/CreateProduct";
 import Home from "./components/home/Home";
 import ProductList from "./components/products/ProductList";
 import Footer from "./components/footer/Footer";
+import ProductDetails from "./components/products/ProductScreen/ProductDetails";
  
 
 function App() {
@@ -18,10 +19,11 @@ function App() {
 			<BrowserRouter>
 				<Navbar />
 				<Routes>
-					<Route path="/" element={<Home />}></Route>
+					<Route path="/product/:id" element={<ProductDetails />}></Route>
 					<Route path="/products" element={<ProductList />}></Route>
 					<Route path="/products/create" element={<CreateProduct />}></Route>
 					<Route path="/signup" element={<Signup />}></Route>
+					<Route path="/" element={<Home />}></Route>
 				</Routes>
 				<Footer />
 				<ToastContainer />
