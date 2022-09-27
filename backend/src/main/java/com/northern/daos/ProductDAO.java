@@ -9,9 +9,9 @@ public interface ProductDAO<Product> {
 
     Product update(Product product);
 
-  Product delete(String id);
+  void delete(Long id); // changed from Product to void - return type
 
-    Product  findById(String id);
+    Product  findById(Long id);
 
     List<Product> getAll();
 

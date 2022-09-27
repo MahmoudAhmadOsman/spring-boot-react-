@@ -20,7 +20,7 @@ import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/api/v1/")
+@RequestMapping("/api/v1")
 public class ProductController {
     private final ProductService productService;
 
@@ -51,20 +51,36 @@ public class ProductController {
     }
 
 
-    //@Delete
-//    @DeleteMapping("/products/{id}")
-//    public ResponseEntity<?> deleteProduct(@PathVariable("id") String id) {
-//        System.out.println("delete route!!");
-//        try {
-//            productService.delete(id);
-//            return new ResponseEntity<>("Product has been deleted successfully!!", HttpStatus.ACCEPTED);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return new ResponseEntity<>(e, HttpStatus.BAD_REQUEST);
-//
-//        }
-//    }
+    //@FindById
+    @GetMapping(value = "/products/list/find/{id}")
+    public Product findProductById(@PathVariable Long id) {
+        return productService.findById(id);
+    }
 
+
+    //@Update
+    @PutMapping("/products/update")
+    public Product updateProduct(@RequestBody Product product) {
+        try {
+            return productService.update(product);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new IllegalStateException("\nUnable to to update product!! " + e.getMessage());
+        }
+    }
+
+    //@Delete
+    @DeleteMapping(value = "/products/delete/{id}")
+    public ResponseEntity<?> deleteProduct(@PathVariable Long id) {
+        try {
+            productService.delete(id);
+            return new ResponseEntity<>("Product has been deleted successfully!!", HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(e, HttpStatus.BAD_REQUEST);
+        }
+
+    }
 
 
 }

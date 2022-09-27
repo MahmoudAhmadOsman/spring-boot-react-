@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.List;
 
 
@@ -31,11 +30,9 @@ public class ProductService implements ProductDAO<Product> {
         if (product.getName().isEmpty() || product.getDescription().isEmpty() || product.getPrice() <= 0) {
             throw new InvalidUserException("\nProduct name fields are required!!!");
         }
-
         try {
             Product saveProduct = productRepository.save(product);
             return saveProduct;
-
         } catch (InvalidUserException e) {
             e.printStackTrace();
             throw new InvalidUserException("\nAll product fields are required!!");
@@ -48,31 +45,42 @@ public class ProductService implements ProductDAO<Product> {
 
     @Override
     public Product update(Product product) {
-        return null;
+        try {
+            Product updatedProduct = productRepository.findById(product.getId()).orElse(null);
+            updatedProduct.setName(product.getName());
+            updatedProduct.setPrice(product.getPrice());
+            updatedProduct.setDescription(product.getDescription());
+            return productRepository.save(updatedProduct);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Unable to update product!! " + e);
+        }
+
+
     }
 
     @Override
-    public Product delete(String id) {
+    public void delete(Long id) {
 
         try {
             Product product = productRepository.findById(id).get();
             productRepository.delete(product);
-
         } catch (Exception e) {
             e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "\nUnable to delete product!!!" + e.getMessage());
         }
 
-        return null;
-//        Product product = productRepository.findById(id).get();
-//        productRepository.delete(product);
-//        return product;
-
     }
 
     @Override
-    public Product findById(String id) {
-        return null;
+    public Product findById(Long id) {
+        try {
+            return productRepository.findById(id).orElse(null);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "\nUnable to find product!!!" + e.getMessage());
+        }
+
     }
 
     @Override
@@ -91,8 +99,7 @@ public class ProductService implements ProductDAO<Product> {
     }
 
 
-    /******* ProductService Validation methods *********/
-
+    /******* ProductService Validation  *********/
     boolean isValidProductName(String name) {
         if (name.isEmpty()) throw new InvalidUserException("\nProduct name is required!!");
         if (name.length() <= 3) throw new InvalidUserException("\nProduct name must be more than 3 characters!!");
