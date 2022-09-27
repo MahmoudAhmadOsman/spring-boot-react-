@@ -55,9 +55,9 @@ public class ProductController {
     @GetMapping(value = "/products/list/find/{id}")
     public Product findProductById(@PathVariable Long id) {
 
-        try{
+        try {
             return productService.findById(id);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             throw new InvalidUserException("\nUnable to  find product with this id!! " + e.getMessage());
         }
@@ -65,7 +65,7 @@ public class ProductController {
 
 
     //@Update
-    @PutMapping("/products/update")
+    @PutMapping(value = "/products/update")
     public Product updateProduct(@RequestBody Product product) {
         try {
             return productService.update(product);
