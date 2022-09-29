@@ -81,7 +81,7 @@ const ProductList = (props: any) => {
 
 									<button
 										onClick={() => handleDelete(product["id"])}
-										// deleteEmployee={deleteEmployee}
+							
 										className="btn btn-outline-danger ms-2"
 										title="Delete"
 									>
