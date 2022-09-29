@@ -1,0 +1,10 @@
+.home_page {
+	position: relative;
+}
+.home_page .container-fluid {
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+.home_page .container-fluid img {
+	height: auto;
+}

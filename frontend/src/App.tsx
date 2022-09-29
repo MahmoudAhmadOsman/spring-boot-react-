@@ -11,7 +11,6 @@ import Home from "./components/home/Home";
 import ProductList from "./components/products/ProductList";
 import Footer from "./components/footer/Footer";
 import ProductDetails from "./components/products/ProductScreen/ProductDetails";
- 
 
 function App() {
 	return (
