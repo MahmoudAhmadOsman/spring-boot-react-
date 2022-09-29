@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-// import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import PRODUCT_API from "../../utils/ApiConfigs";
 
-const ProductList = () => {
+const ProductList = (props: any) => {
+	const navigate = useNavigate();
 	const [products, setProducts] = useState([]);
 
 	useEffect(() => {
@@ -12,13 +12,25 @@ const ProductList = () => {
 			try {
 				const response = await PRODUCT_API.get("/products/list");
 				setProducts(response.data);
-				// console.log(response.data);
 			} catch (error) {
 				toast.error("Error: unable to load  data!!");
 			}
 		};
 		fetchProduct();
 	}, []);
+
+	//Delete Product
+	const handleDelete = (id: any) => {
+		alert("Are you sure, you want to delete this product?");
+		PRODUCT_API.delete("/products/delete/" + id)
+			.then(() => {
+				toast.warning("Procuct deleted successfully!!!");
+				navigate("/products/create");
+			})
+			.catch((error) => {
+				toast.error("Error: unable to delete product!!");
+			});
+	};
 
 	return (
 		<section className="product-list">
@@ -53,12 +65,34 @@ const ProductList = () => {
 									<p className="card-text text-muted">
 										{product["description"]}
 									</p>
+
 									<Link
 										to={"/product/" + product["id"]}
 										className="btn btn-outline-success"
 									>
 										View Details
 									</Link>
+									<Link
+										to={"/product/" + product["id"]}
+										className="btn btn-outline-info ms-2"
+									>
+										Edit
+									</Link>
+
+									<button
+										onClick={() => handleDelete(product["id"])}
+										// deleteEmployee={deleteEmployee}
+										className="btn btn-outline-danger ms-2"
+										title="Delete"
+									>
+										Delete
+									</button>
+									{/* <Link
+										to={"/product/" + product["id"]}
+										className="btn btn-outline-danger ms-2"
+									>
+										Delete
+									</Link> */}
 								</div>
 							</div>
 						</div>

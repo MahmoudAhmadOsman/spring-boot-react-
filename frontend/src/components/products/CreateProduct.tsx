@@ -99,7 +99,7 @@ const CreateProduct = () => {
 					</div>
 
 					<button type="submit" className="btn btn-primary btn-lg mb-4">
-						Submit
+						SUBMIT
 					</button>
 				</form>
 			</div>{" "}
