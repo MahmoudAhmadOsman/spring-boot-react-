@@ -1,4 +1,4 @@
-CREATE DTABLE IF NOT EXIS northern;
+CREATE DTABLE IF NOT EXIS customer;
 
 use northern;
 
