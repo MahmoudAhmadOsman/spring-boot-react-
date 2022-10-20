@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,7 +19,6 @@ public class Product {
     private String name;
     private String description;
     private double price;
-
 
 
 }

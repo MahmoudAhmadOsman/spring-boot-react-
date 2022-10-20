@@ -22,10 +22,10 @@ const CreateProduct = () => {
 		setDescription(e.target.value);
 	};
 
-	const submit = (e: { preventDefault: () => void }) => {
+	const submit = async (e: { preventDefault: () => void }) => {
 		e.preventDefault();
 
-		PRODUCT_API.post("/products/create", {
+		await PRODUCT_API.post("/products/create", {
 			name: name,
 			price: price,
 			description: description,

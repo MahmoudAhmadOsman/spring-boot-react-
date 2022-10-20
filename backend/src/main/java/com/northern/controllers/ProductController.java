@@ -33,6 +33,7 @@ public class ProductController {
 
 
     //@Get
+    //    @GetMapping(value = "/products/list")
     @GetMapping(value = "/products/list", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Product>> getAllProducts() throws IOException {
 
@@ -41,6 +42,7 @@ public class ProductController {
     }
 
     //@Post
+// @PostMapping(value = "/products/create")
     @PostMapping(value = "/products/create", consumes = "application/json", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Product> createProduct(@RequestBody Product product) throws IOException {
         log.info("Create new product!!");
@@ -76,7 +78,7 @@ public class ProductController {
     //@Delete
     @DeleteMapping(value = "/products/delete/{id}")
     public ResponseEntity<?> deleteProduct(@PathVariable Long id) {
-        log.info("Delete product with id: " + id );
+        log.info("Delete product with id: " + id);
         try {
             productService.delete(id);
             return new ResponseEntity<>("Product has been deleted successfully!!", HttpStatus.ACCEPTED);
