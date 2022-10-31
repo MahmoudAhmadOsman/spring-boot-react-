@@ -1,37 +1,10 @@
-import { resolve } from "node:path/win32";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { toast } from "react-toastify";
-import PRODUCT_API from "../../../utils/ApiConfigs";
 
 const ProductDetails = () => {
 	const productDetails = "Product Details ";
 	const { id } = useParams();
-
-	const [products, setProducts] = useState([]);
-
-	useEffect(() => {
-		const fetchProduct = async () => {
-			try {
-				// const res = await PRODUCT_API.get(`/products/list/${id}`);
-				const res = await PRODUCT_API.get("/products/list/find/" + id);
-				setProducts(res.data);
-
-				// setState({ product: res.data });
-				// const findAll = setProducts(res?.data?.products);
-				// const name = res.data.name;
-				// const price = res.data.pricename;
-				// const description = res.data.description;
-
-				const { name, price, description } = res.data;
-				// console.log(name, price, description);
-				console.log(res.data);
-			} catch (error) {
-				toast.error("Error: unable to load  details!!");
-			}
-		};
-		fetchProduct();
-	}, []);
+ 
 
 	return (
 		<section className="product-details mt-3 mb-3">
@@ -50,7 +23,6 @@ const ProductDetails = () => {
 						<h2 className="text-success">
 							{productDetails} | {id}
 						</h2>
-						<p>Now showing post {id}</p>
 					</div>
 					<hr />
 				</div>
@@ -68,6 +40,8 @@ const ProductDetails = () => {
 						<h1>
 							<b>Price: $577.99 </b>
 							<span className="text-daner"></span>
+
+							{JSON.stringify(id)}
 						</h1>
 
 						<div className="product-desc">

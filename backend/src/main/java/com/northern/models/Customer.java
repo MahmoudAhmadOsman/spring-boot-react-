@@ -8,6 +8,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 
 @Data
 @AllArgsConstructor
@@ -22,6 +23,8 @@ public class Customer {
     private int id;
 
     private String name;
+    
+    @NotNull
     @Email
     private String email;
 

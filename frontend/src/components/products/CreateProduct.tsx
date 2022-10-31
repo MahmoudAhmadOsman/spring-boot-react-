@@ -102,7 +102,7 @@ const CreateProduct = () => {
 						SUBMIT
 					</button>
 				</form>
-			</div>{" "}
+			</div>
 		</section>
 	);
 };

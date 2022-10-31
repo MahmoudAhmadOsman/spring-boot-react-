@@ -8,15 +8,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.sql.Date;
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
+@RequestMapping()
 public class RegisterController {
     @Autowired
     private CustomerRepository customerRepository;
@@ -24,8 +24,8 @@ public class RegisterController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @PostMapping("/register")
-    public ResponseEntity<String> registerUser(@RequestBody Customer customer) {
+    @PostMapping(value = "/register")
+    public ResponseEntity<String> registerUser(@Valid @RequestBody Customer customer) {
         Customer savedCustomer = null;
         ResponseEntity response = null;
         try {
@@ -41,11 +41,13 @@ public class RegisterController {
         } catch (Exception ex) {
             response = ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("An exception has occurred: " + ex.getMessage());
+                    .body("An exception has occurred At: " + ex.getMessage());
         }
         return response;
     }
 
+
+    //get a user by email
     @RequestMapping("/user")
     public Customer getUserDetailsAfterLogin(Authentication authentication) {
         List<Customer> customers = customerRepository.findByEmail(authentication.getName());
