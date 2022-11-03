@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import PRODUCT_API from "../../utils/ApiConfigs";
 
-const ProductList = (props: any) => {
+const ProductList = () => {
 	const navigate = useNavigate();
 	const [products, setProducts] = useState([]);
 

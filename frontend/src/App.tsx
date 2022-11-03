@@ -9,8 +9,9 @@ import CreateProduct from "./components/products/CreateProduct";
 import Home from "./components/home/Home";
 import ProductList from "./components/products/ProductList";
 import Footer from "./components/footer/Footer";
-import ProductDetails from "./components/products/ProductScreen/ProductDetails";
+
 import Register from "./components/signup/Register";
+import ProductDetails from "./components/products/ProductDetails";
 
 function App() {
 	return (

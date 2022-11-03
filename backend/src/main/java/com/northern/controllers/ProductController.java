@@ -18,8 +18,8 @@ import java.util.logging.Logger;
 @RequestMapping("/api/v1")
 public class ProductController {
     private final ProductService productService;
-    Logger log = Logger.getGlobal();
 
+        Logger log = Logger.getGlobal();
     public ProductController(ProductService productService) {
         this.productService = productService;
     }
@@ -32,29 +32,25 @@ public class ProductController {
      */
 
 
-    //@Get
-    //    @GetMapping(value = "/products/list")
+    // @GetMapping(value = "/products/list")
     @GetMapping(value = "/products/list", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Product>> getAllProducts() throws IOException {
-
         List<Product> products = productService.getAll();
         return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
     }
 
-    //@Post
-// @PostMapping(value = "/products/create")
+
+
+    //@PostMapping(value = "/products/create")
     @PostMapping(value = "/products/create", consumes = "application/json", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Product> createProduct(@RequestBody Product product) throws IOException {
-        log.info("Create new product!!");
         Product createdProduct = productService.save(product);
         return new ResponseEntity<Product>(createdProduct, HttpStatus.CREATED);
     }
 
 
-    //@FindById
     @GetMapping(value = "/products/list/find/{id}")
     public Product findProductById(@PathVariable Long id) {
-
         try {
             return productService.findById(id);
         } catch (Exception e) {
@@ -64,7 +60,6 @@ public class ProductController {
     }
 
 
-    //@Update
     @PutMapping(value = "/products/update")
     public Product updateProduct(@RequestBody Product product) {
         try {
@@ -75,10 +70,9 @@ public class ProductController {
         }
     }
 
-    //@Delete
     @DeleteMapping(value = "/products/delete/{id}")
     public ResponseEntity<?> deleteProduct(@PathVariable Long id) {
-        log.info("Delete product with id: " + id);
+        log.info("Deleting product with an id of: " + id);
         try {
             productService.delete(id);
             return new ResponseEntity<>("Product has been deleted successfully!!", HttpStatus.ACCEPTED);

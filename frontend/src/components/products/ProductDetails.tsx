@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-const ProductDetails = () => {
+const ProductDetails = (product: any) => {
 	const productDetails = "Product Details ";
 	const { id } = useParams();
- 
 
 	return (
 		<section className="product-details mt-3 mb-3">
@@ -45,11 +44,16 @@ const ProductDetails = () => {
 						</h1>
 
 						<div className="product-desc">
-							<h3 className="text-muted">Description</h3>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat,
-								dolore odio nihil ex quaerat.
-							</p>
+							<h3 className="text-muted">name</h3>
+							<p>description</p>
+
+							{/* params */}
+
+							{/* {
+								product.filter(product => product.id === id).map(product:any)=>(
+							
+								)
+							} */}
 						</div>
 					</div>
 				</div>
