@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface ProductDAO<Product> {
 
-    Product save(Product product) throws IOException;
+    Product save(Product product);
 
     Product update(Product product);
 

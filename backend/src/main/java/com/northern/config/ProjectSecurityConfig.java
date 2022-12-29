@@ -18,7 +18,7 @@ import java.util.Collections;
 public class ProjectSecurityConfig {
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-       // http.csrf().disable(); // disable CORS
+        http.csrf().disable(); // disable CORS
         http.cors().configurationSource(new CorsConfigurationSource() {
                     @Override
                     public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
@@ -38,6 +38,7 @@ public class ProjectSecurityConfig {
                 .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 .and().authorizeRequests()
                 .antMatchers("/products/create", "/products/update", "/user").authenticated()
+                .antMatchers("/employees/save", "/update", "/find","/delete").authenticated()
                 .antMatchers("/products/list", "/contact", "/register").permitAll()
                 .and().formLogin()
                 .and().httpBasic();

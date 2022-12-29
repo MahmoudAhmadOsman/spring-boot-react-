@@ -23,21 +23,21 @@ public class Product {
 
 
     //Image model
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "product_images",
-            joinColumns = {
-            @JoinColumn(name = "product_id")},
-            inverseJoinColumns = {
-            @JoinColumn(name = "image_id")
-    }
-    )
-    private Set<ImageModel> prodductImages;
-
-    public Set<ImageModel> getProdductImages() {
-        return prodductImages;
-    }
-
-    public void setProdductImages(Set<ImageModel> prodductImages) {
-        this.prodductImages = prodductImages;
-    }
+//    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    @JoinTable(name = "product_images",
+//            joinColumns = {
+//            @JoinColumn(name = "product_id")},
+//            inverseJoinColumns = {
+//            @JoinColumn(name = "image_id")
+//    }
+//    )
+//    private Set<ImageModel> prodductImages;
+//
+//    public Set<ImageModel> getProdductImages() {
+//        return prodductImages;
+//    }
+//
+//    public void setProdductImages(Set<ImageModel> prodductImages) {
+//        this.prodductImages = prodductImages;
+//    }
 }

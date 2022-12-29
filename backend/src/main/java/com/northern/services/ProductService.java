@@ -26,7 +26,7 @@ public class ProductService implements ProductDAO<Product> {
     }
 
     @Override
-    public Product save(Product product) throws IOException {
+    public Product save(Product product) {
         if (product.getName().isEmpty() || product.getDescription().isEmpty() || product.getPrice() <= 0) {
             throw new InvalidUserException("\nProduct name fields are required!!!");
         }
