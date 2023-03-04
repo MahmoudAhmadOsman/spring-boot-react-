@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/api/v1/employees")
+@RequestMapping("/api/v3/employees")
 
 public class EmployeeController {
 
@@ -32,13 +32,13 @@ public class EmployeeController {
         return employeeService.getAllEmployees();
     }
 
-    @GetMapping(value = "/find/{id}")
+    @GetMapping(value = "/{id}")
     public Optional<Employee> getEmployeeById(@PathVariable Long id) {
         return employeeService.getEmployeeById(id);
     }
 
 
-    @PutMapping(value = "/update/{id}")
+    @PutMapping(value = "/{id}")
     public Employee updateEmployee(@PathVariable Long id, @RequestBody Employee employee) {
         return employeeService.updateEmployee(id, employee);
     }

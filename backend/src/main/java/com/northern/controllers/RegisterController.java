@@ -24,7 +24,7 @@ public class RegisterController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @PostMapping(value = "/register")
+    @PostMapping(path = "/register")
     public ResponseEntity<String> registerUser(@Valid @RequestBody Customer customer) {
         Customer savedCustomer = null;
         ResponseEntity response = null;
@@ -36,7 +36,7 @@ public class RegisterController {
             if (savedCustomer.getId() > 0) {
                 response = ResponseEntity
                         .status(HttpStatus.CREATED)
-                        .body("User has been successfully registered!!1");
+                        .body("User has been successfully registered!!");
             }
         } catch (Exception ex) {
             response = ResponseEntity

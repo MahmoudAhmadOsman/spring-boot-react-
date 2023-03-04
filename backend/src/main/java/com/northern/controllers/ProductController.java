@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/products")
 public class ProductController {
     private final ProductService productService;
 
@@ -33,7 +33,7 @@ public class ProductController {
 
 
     // @GetMapping(value = "/products/list")
-    @GetMapping(value = "/products/list", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/list", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Product>> getAllProducts() throws IOException {
         List<Product> products = productService.getAll();
         return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
@@ -42,7 +42,7 @@ public class ProductController {
 
 
     //@PostMapping(value = "/products/create")
-    @PostMapping(value = "/products/create", consumes = "application/json", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/save", consumes = "application/json", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Product> createProduct(@RequestBody Product product) throws IOException {
         Product createdProduct = productService.save(product);
         return new ResponseEntity<Product>(createdProduct, HttpStatus.CREATED);
@@ -51,7 +51,7 @@ public class ProductController {
 
 
 
-    @GetMapping(value = "/products/list/find/{id}")
+    @GetMapping(value = "/{id}")
     public Product findProductById(@PathVariable Long id) {
         try {
             return productService.findById(id);
@@ -62,7 +62,7 @@ public class ProductController {
     }
 
 
-    @PutMapping(value = "/products/update")
+    @PutMapping(value = "/{id}")
     public Product updateProduct(@RequestBody Product product) {
         try {
             return productService.update(product);
@@ -72,7 +72,7 @@ public class ProductController {
         }
     }
 
-    @DeleteMapping(value = "/products/delete/{id}")
+    @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<?> deleteProduct(@PathVariable Long id) {
         log.info("Deleting product with an id of: " + id);
         try {

@@ -4,23 +4,23 @@ const PRODUCT_API_BASE_URL = "http://localhost:8080/api/v1/products";
 
 class ProductService {
 	getProducts() {
-		return axios.get(PRODUCT_API_BASE_URL);
+		return axios.get(PRODUCT_API_BASE_URL + "/list");
 	}
 
 	saveProduct(product: any) {
-		return axios.post(PRODUCT_API_BASE_URL, product);
+		return axios.post(PRODUCT_API_BASE_URL + "/save" + product);
 	}
 
-	getProductById(productId: any) {
-		return axios.get(PRODUCT_API_BASE_URL + "/" + productId);
+	getProductById(id: any) {
+		return axios.get(`${PRODUCT_API_BASE_URL}/${id}`);
 	}
 
-	updateProduct(product: any, productId: any) {
-		return axios.put(PRODUCT_API_BASE_URL + "/" + productId, product);
+	updateProduct(id: number, product: any) {
+		return axios.put(`${PRODUCT_API_BASE_URL}/${id}`, product);
 	}
 
-	deleteProduct(productId: any) {
-		return axios.delete(PRODUCT_API_BASE_URL + "/" + productId);
+	deleteProduct(id: number) {
+		return axios.delete(PRODUCT_API_BASE_URL + "/delete/" + id);
 	}
 }
 
