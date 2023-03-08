@@ -39,7 +39,7 @@ public class ProjectSecurityConfig {
                 .and().authorizeRequests()
                 .antMatchers("/products/create", "/products/update", "/user").authenticated()
                 .antMatchers("/employees/save", "/update", "/find","/delete").authenticated()
-                .antMatchers("/products/list", "/contact", "/register").permitAll() // allow to logged in user
+                .antMatchers("/products/list", "/contact", "/register").permitAll() // allow to logged in users
                 .and().formLogin()
                 .and().httpBasic();
         return http.build();
