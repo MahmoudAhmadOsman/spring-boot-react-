@@ -48,7 +48,7 @@ public class ProjectSecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder(); // encrypt password
     }
 
 
