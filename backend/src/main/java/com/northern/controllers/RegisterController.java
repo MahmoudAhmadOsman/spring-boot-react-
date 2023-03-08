@@ -47,7 +47,7 @@ public class RegisterController {
     }
 
 
-    //get a user by email
+    //get a user by email -- login
     @RequestMapping("/user")
     public Customer getUserDetailsAfterLogin(Authentication authentication) {
         List<Customer> customers = customerRepository.findByEmail(authentication.getName());
