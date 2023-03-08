@@ -34,12 +34,12 @@ public class ProjectSecurityConfig {
 
                 })
 
-                .and().csrf().ignoringAntMatchers("/contact", "/register")
+                .and().csrf().ignoringAntMatchers("/contact", "/register") // publically accessisble
                 .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 .and().authorizeRequests()
                 .antMatchers("/products/create", "/products/update", "/user").authenticated()
                 .antMatchers("/employees/save", "/update", "/find","/delete").authenticated()
-                .antMatchers("/products/list", "/contact", "/register").permitAll()
+                .antMatchers("/products/list", "/contact", "/register").permitAll() // allow to logged in user
                 .and().formLogin()
                 .and().httpBasic();
         return http.build();
