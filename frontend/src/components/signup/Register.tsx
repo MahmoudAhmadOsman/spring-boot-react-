@@ -40,7 +40,7 @@ const Signup = () => {
 				<div className="row mt-3">
 					<div className="col-lg-6 col-md-6 col-xs-12 m-auto shadow shadow-lg mb-5 bg-body p-4 rounded">
 						<h2 className="text-success">Create An Account</h2> <hr />
-						<small>Please provide basic information about your account.</small>
+						<small>Please provide the following information.</small>
 						<form autoComplete="off">
 							<div className="mb-3 mt-3">
 								<label htmlFor="username">Full Name</label>
